@@ -20,8 +20,8 @@ public interface EventRepository extends JpaRepository<Event, String> {
 	@Modifying
 	@Query("delete from Event e where e.eventId=?1")
 	void deleteEvent(String eventId);
- 
-	@Query("select a from Event a where id=?1")
-	Event getAll(String id);
+
 	
+	@Query("select e from Event e where e.eventId=?1 and e.sportsName=?2 and e.eventName=?3")
+Event EventReport(String eventId,String sportsName,String eventName);
 }

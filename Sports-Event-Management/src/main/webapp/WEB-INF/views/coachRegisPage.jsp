@@ -18,14 +18,11 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-	
 <style type="text/css">
 body {
 	color: #999;
-	background: url("drawable/coach1.jpg");
+	background: #f5f5f5;
 	font-family: 'Roboto', sans-serif;
-	background-repeat: no-repeat;
-	background-size: cover;
 }
 
 .form-control, .form-control:focus, .input-group-addon {
@@ -55,19 +52,14 @@ body {
 .signup-form form {
 	border-radius: 1px;
 	margin-bottom: 15px;
-	margin-top:50px;
 	background: #fff;
 	border: 1px solid #f3f3f3;
 	box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
 	padding: 30px;
 }
 
-.error{
-color:#ff6666;
-}
 .signup-form .form-group {
-	margin-bottom: 5px;
-	margin-top: 15px;
+	margin-bottom: 20px;
 }
 
 .btn {
@@ -136,52 +128,106 @@ color:#ff6666;
 	font-size: 7px;
 	position: absolute;
 }
+.error{
+color:red;}
 </style>
+<script>
+
+
+function verify()
+{
+ if(document.frm.firstName.value=="" || document.frm.lastName.value=="" || document.frm.age.value=="" || document.frm.contact.value=="" || document.frm.organizerId.value=="" || document.frm.password.value=="")
+ {
+  alert('Please update the highlighted mandatory fields');
+ }
+ 
+ 
+}
+
+function validateForm()
+{
+	
+    if(document.frm.firstName.value=="")
+    {
+      
+      document.frm.username.focus();
+      return false;
+    }
+    else if(document.frm.lastName.value=="")
+    {
+    
+      document.frm.pwd.focus();
+      return false;
+    }
+    else if(document.frm.age.value=="")
+    {
+    
+      document.frm.age.focus();
+      return false;
+    }
+    else if(document.frm.contact.value=="")
+    {
+    
+      document.frm.contact.focus();
+      return false;
+    }
+    else if(document.frm.organizerId.value=="")
+    {
+    
+      document.frm.organizerId.focus();
+      return false;
+    }
+    
+    else if(document.frm.password.value=="")
+    {
+    
+      document.frm.password.focus();
+      return false;
+    }
+    return true;
+}
+</script>
 </head>
 <body>
-
 	<div class="signup-form">
-	<%@include file="header.html" %>
-		<form:form action="coachRegisterUser" method="get"
-			modelAttribute="coach">
+		<form:form name="frm" action="coachRegisterUser" method="get"
+			modelAttribute="coach" onSubmit="return validateForm()">
 			<h2>Coach Registration</h2>
-			
+		
 				
 					<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								
 								<form:input path="firstName" class="form-control"
-									name="firstName" placeholder="First Name" required="required" />
+									name="firstName" placeholder="First Name"  />
 							</div>
 						</div>
 
-					<form:errors class="error" path="firstName"></form:errors>
+				<form:errors path="firstName" class="error"></form:errors>
 				
-				
-					<div class="form-group">
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								
 								<form:input class="form-control" path="lastName" name="lastName"
-									required="required" placeholder="Last Name" />
+								 placeholder="Last Name" />
 							</div>
 						</div>
 
-					<form:errors class="error" path="lastName"></form:errors>
-				
-				
-					<div class="form-group">
+					<form:errors path="lastName" class="error"></form:errors>
+			
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+								
 								<form:input class="form-control" path="age" name="age"
-									required="required" placeholder="Age" />
+								 placeholder="Age" />
 							</div>
 						</div>
-					<form:errors class="error" path="age"></form:errors>
+					<form:errors path="age" class="error"></form:errors>
 				
-				
-					<div class="form-group">
+			
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-mars"></i></span>
+								
 								<div class="form-control form-check-inline">
 									<label class="form-check-label"> <form:radiobutton
 											path="gender" id="gender" checked="true" value="Male"
@@ -189,62 +235,59 @@ color:#ff6666;
 									</label>
 								</div>
 
-								<span class="input-group-addon"><i class="fa fa-venus"></i></span>
+								
 								<div class="form-control form-check-inline">
 									<label class="form-check-label"> <form:radiobutton
 											path="gender" id="gender" value="Female"
 											class="form-check-input" name="optradio" />Female
 									</label>
 								</div>
-
-					<form:errors class="error" path="gender"></form:errors>
-
-					</div>
+<form:errors path="gender" class="error"></form:errors>
 
 					</div>
-				
+
+					</div>
+			
 
 				
-					<div class="form-group">
+					<td><div class="form-group">
 							<div class="input-group">
 								<span class="input-group-addon"><i class="fa fa-phone"></i></span>
 								<form:input class="form-control" name="contact" path="contact"
-									required="required" placeholder="Contact Number" />
+								 placeholder="Contact Number" />
 							</div>
 						</div>
 
-					<form:errors class="error" path="contact"></form:errors>
+					<form:errors path="contact" class="error"></form:errors>
 				
 				
 					<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+								
 								<form:input path="coachId" class="form-control" name="coachId"
-									placeholder="Coach Id" required="required" />
+									placeholder="Coach Id"  />
 							</div>
 						</div>
-					<form:errors class="error" path="coachId"></form:errors>
+					<form:errors path="coachId" class="error"> </form:errors>
 				
 				
 					<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"> <i class="fa fa-lock"></i>
-									<i class="fa fa-check"></i>
-								</span>
+								
 								<form:input path="password" class="form-control" name="password"
-									placeholder="Password" required="required" />
+									placeholder="Password"/>
 							</div>
 						</div>
 
-					<form:errors class="error" path="password"></form:errors>
+				<form:errors path="password" class="error"></form:errors>
 				
 				
 					<div class="form-group">
-							<input type="submit" name="Register" value="Register"
+							<input type="submit" name="Register" value="Register" onClick="verify()"
 								class="btn btn-primary btn-block btn-lg" />
 						</div>
 				
-				
+			
 					</form:form>
 
 					<div class="text-center">

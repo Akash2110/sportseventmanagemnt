@@ -24,9 +24,6 @@ body {
 	background: #f5f5f5;
 	font-family: 'Roboto', sans-serif;
 }
-.error{
-color:#ff6666;
-}
 
 .form-control, .form-control:focus, .input-group-addon {
 	border-color: #e1e1e1;
@@ -62,8 +59,7 @@ color:#ff6666;
 }
 
 .signup-form .form-group {
-	 margin-bottom: 5px; 
-       margin-top:15px;
+	margin-bottom: 20px;
 }
 
 .btn {
@@ -132,50 +128,102 @@ color:#ff6666;
 	font-size: 7px;
 	position: absolute;
 }
+.error
+{
+color:red;}
 </style>
+<script>
+
+
+function verify()
+{
+ if(document.frm.firstName.value=="" || document.frm.lastName.value=="" || document.frm.age.value=="" || document.frm.contact.value=="" || document.frm.organizerId.value=="" || document.frm.password.value=="")
+ {
+  alert('Please update the highlighted mandatory fields');
+ }
+ 
+ 
+}
+
+function validateForm()
+{
+	
+    if(document.frm.firstName.value=="")
+    {
+      
+      document.frm.username.focus();
+      return false;
+    }
+    else if(document.frm.lastName.value=="")
+    {
+    
+      document.frm.pwd.focus();
+      return false;
+    }
+    else if(document.frm.age.value=="")
+    {
+    
+      document.frm.age.focus();
+      return false;
+    }
+    else if(document.frm.contact.value=="")
+    {
+    
+      document.frm.contact.focus();
+      return false;
+    }
+    else if(document.frm.organizerId.value=="")
+    {
+    
+      document.frm.organizerId.focus();
+      return false;
+    }
+    
+    else if(document.frm.password.value=="")
+    {
+    
+      document.frm.password.focus();
+      return false;
+    }
+    return true;
+}
+</script>
 </head>
 <body>
 	<div class="signup-form">
-		<form:form action="organizerRegisterUser" method="get"
-			modelAttribute="organizer">
+		<form:form name="frm" action="organizerRegisterUser" method="get"
+			modelAttribute="organizer" onSubmit="return validateForm()">
 			<h2>Organizer Registration</h2>
-			
-				
-					<div class="form-group">
+			<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								
 								<form:input path="firstName" class="form-control"
-									name="firstName" placeholder="First Name" required="required" />
+									name="firstName" placeholder="First Name"  />
 							</div>
 						</div>
-
-					<form:errors class="error" path="firstName"></form:errors>
-				
+					&ensp;<form:errors path="firstName"  class="error"></form:errors>&ensp;
 				
 					<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								
 								<form:input class="form-control" path="lastName" name="lastName"
-									required="required" placeholder="Last Name" />
+									 placeholder="Last Name" />
 							</div>
 						</div>
 
-					<form:errors class="error" path="lastName"></form:errors>
+					&ensp;<form:errors path="lastName"  class="error"></form:errors>&ensp;
 				
-				
-					<div class="form-group">
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+								
 								<form:input class="form-control" path="age" name="age"
-									required="required" placeholder="Age" />
+									 placeholder="Age" />
 							</div>
 						</div>
-					<form:errors class="error" path="age"></form:errors>
-				
-				
-					<div class="form-group">
+					<form:errors path="age"></form:errors>
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-mars"></i></span>
+								
 								<div class="form-control form-check-inline">
 									<label class="form-check-label"> <form:radiobutton
 											path="gender" id="gender" checked="true" value="Male"
@@ -183,7 +231,7 @@ color:#ff6666;
 									</label>
 								</div>
 
-								<span class="input-group-addon"><i class="fa fa-venus"></i></span>
+								
 								<div class="form-control form-check-inline">
 									<label class="form-check-label"> <form:radiobutton
 											path="gender" id="gender" value="Female"
@@ -191,54 +239,43 @@ color:#ff6666;
 									</label>
 								</div>
 
-					<form:errors class="error" path="gender"></form:errors>
+				<form:errors path="gender"></form:errors>
 
 					</div>
 
 					</div>
 				
 
-				
-					<div class="form-group">
+			
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+								
 								<form:input class="form-control" name="contact" path="contact"
-									required="required" placeholder="Contact Number" />
+								 placeholder="Contact Number" />
 							</div>
 						</div>
 
-					<form:errors class="error" path="contact"></form:errors>
-				
-				
-					<div class="form-group">
+					&ensp;<form:errors path="contact"  class="error"></form:errors>&ensp;
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-id-card"></i></span>
-								<form:input path="organizerId" class="form-control"
+																<form:input path="organizerId" class="form-control"
 									name="organizerId" placeholder="Organizer Id"
-									required="required" />
+									/>
 							</div>
 						</div>
-					<form:errors class="error" path="organizerId"></form:errors>
-				
-				
-					<div class="form-group">
+					&ensp;<form:errors path="organizerId"  class="error"></form:errors>&ensp;
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"> <i class="fa fa-lock"></i>
-									<i class="fa fa-check"></i>
-								</span>
+								
 								<form:input path="password" class="form-control" name="password"
-									placeholder="Password" required="required" />
+									placeholder="Password"  />
 							</div>
 						</div>
 
-					<form:errors class="error" path="password"></form:errors>
-				
-				
-					<div class="form-group">
+					<form:errors path="password" class="error"></form:errors>
+				<div class="form-group">
 							<input type="submit" name="Register" value="Register"
-								class="btn btn-primary btn-block btn-lg" />
-						</div>
-				
+								class="btn btn-primary btn-block btn-lg" onClick="verify()"/>
 				
 					</form:form>
 

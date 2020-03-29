@@ -21,7 +21,9 @@
 <style type="text/css">
 body {
 	color: #999;
-	background: #f5f5f5;
+	background-image: url("drawable/sportsAdd.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -35,6 +37,7 @@ body {
 	margin: 0 auto;
 	padding: 30px 0;
 	border-radius: 9px;
+	margin-top:80px;
 }
 
 .signup-form h2 {
@@ -134,70 +137,59 @@ body {
 
 </head>
 <body>
+<%@include file="header.html" %>
 	<div class="signup-form">
-		<form:form action="updateSportRegister" method="get" modelAttribute="sports">
+		<form:form action="sportRegister" method="get" modelAttribute="sports">
 			<h2>Sport Update</h2>
-			<table>
-
-
-				<tr>
-					<td><div class="form-group">
+			<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+								
 								<form:input path="sportsId" class="form-control" name="sportsId"
-									readonly="true" value="${spo.getSportsId() }" required="required" />
-								<td><form:errors path="sportsId"></form:errors></td>
+									readonly="true" placeholder="Sports Id" required="required" />
+								<form:errors path="sportsId"></form:errors>
 
 
 							</div>
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="form-group">
+						</div>
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								
 								<form:input path="sportsName" class="form-control"
 									readonly="true" name="sportsName" placeholder="Sports Name"
-									value="${spo.getSportsName() }" required="required" />
-								<td><form:errors path="sportsName"></form:errors></td>
+									required="required" />
+								<form:errors path="sportsName"></form:errors>
 							</div>
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="form-group">
+						</div>
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-user"></i></span>
+								
 								<form:input path="sportsType" class="form-control"
 									readonly="true" name="sportsType" placeholder="Sports Type"
-									value="${spo.getSportsType() }" required="required" />
-								<td><form:errors path="sportsType"></form:errors></td>
+									required="required" />
+								<form:errors path="sportsType"></form:errors>
 							</div>
-						</div></td>
-				</tr>
-				<tr>
-					<td><div class="form-group">
+						</div>
+				
+					<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+								
 								<form:input type="text" path="noOfPlayers" class="form-control"
 									name="noOfPlayers" placeholder="No of Players"
-								value="${spo.getNoOfPlayers() }"	required="required" />
-								<td><form:errors path="noOfPlayers"></form:errors></td>
+									required="required" />
+								<form:errors path="noOfPlayers"></form:errors>
 							</div>
-						</div></td>
-				</tr>
-
-
-				<tr>
-					<td><div class="form-group">
+						</div>
+				
+				<div class="form-group">
 							<div class="input-group">
-								<span class="input-group-addon"><i class="fa fa-phone"></i></span>
+								
 								<form:input path="timeOfMatch" class="form-control"
 									name="timeOfMatch" placeholder="Time Of Match"
-									value="${spo.getTimeOfMatch() }" required="required" />
-								<td><form:errors path="timeOfMatch"></form:errors></td>
+									required="required" />
+								<form:errors path="timeOfMatch"></form:errors>
 							</div>
-						</div></td>
-				</tr>
+						</div>
+				
 
 
 				<tr class="form-group">

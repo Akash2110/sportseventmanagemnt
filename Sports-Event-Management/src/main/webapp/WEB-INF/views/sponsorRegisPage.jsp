@@ -59,15 +59,11 @@ body {
 }
 
 .signup-form .form-group {
-       margin-bottom: 5px; 
-       margin-top:15px;
+       margin-bottom: 20px;
 }
 
 .btn {
        
-}
-.error{
-color:#ff6666;
 }
 
 .btn:hover {
@@ -132,63 +128,112 @@ color:#ff6666;
        font-size: 7px;
        position: absolute;
 }
+.error
+{
+color:red;}
 </style>
+<script>
+
+
+function verify()
+{
+ if(document.frm.sponsorId.value=="" || document.frm.sponsorshipLocation.value=="" || document.frm.sponsorProduct.value=="" || document.frm.password.value=="" )
+ {
+  alert('Please update the highlighted mandatory fields');
+ }
+ 
+ 
+}
+
+function validateForm()
+{
+	
+    if(document.frm.firstName.value=="")
+    {
+      
+      document.frm.username.focus();
+      return false;
+    }
+    else if(document.frm.lastName.value=="")
+    {
+    
+      document.frm.pwd.focus();
+      return false;
+    }
+    else if(document.frm.age.value=="")
+    {
+    
+      document.frm.age.focus();
+      return false;
+    }
+    else if(document.frm.contact.value=="")
+    {
+    
+      document.frm.contact.focus();
+      return false;
+    }
+    else if(document.frm.organizerId.value=="")
+    {
+    
+      document.frm.organizerId.focus();
+      return false;
+    }
+    
+    else if(document.frm.password.value=="")
+    {
+    
+      document.frm.password.focus();
+      return false;
+    }
+    return true;
+}
+</script>
 </head>
 <body>
        <div class="signup-form">
-              <form:form action="sponsorRegisterUser" method="get"
-                     modelAttribute="sponsor">
+              <form:form name="frm" action="sponsorRegisterUser" method="get"
+                     modelAttribute="sponsor" onSubmit="return validateForm()">
                      <h2>Sponsor Registration</h2>
-                     
-                           
-                                  <div class="form-group">
+                     <div class="form-group">
                                                 <div class="input-group">
-                                                       <span class="input-group-addon"><i class=""></i></span>
+                                                      
                                                        <form:input path="sponsorId" class="form-control"
-                                                              name="sponsorId" placeholder="Sponsor Id" required="required" />
+                                                              name="sponsorId" placeholder="Sponsor Id"  />
                                                 </div>
                                          </div>
 
-                                  <form:errors class="error" path="sponsorId"></form:errors>
-                      
-                           
-                                  <div class="form-group">
+                                  <form:errors path="sponsorId" class="error"></form:errors>
+                          <div class="form-group">
                                                 <div class="input-group">
-                                                       <span class="input-group-addon"> <i class="fa fa-lock"></i>
-                                                              <i class="fa fa-check"></i>
-                                                       </span>
+                                                       
                                                        <form:input path="password" class="form-control" name="password"
-                                                              placeholder="Password" required="required" />
+                                                              placeholder="Password"  />
                                                 </div>
                                          </div>
 
-                                 <form:errors class="error" path="password"></form:errors>
-                           
-                           
-
-                                  <div class="form-group">
+                                  <form:errors path="password" class="error"></form:errors>
+                           <div class="form-group">
                                                 <div class="input-group">
-                                                       <span class="input-group-addon"><i class="fa fa-phone"></i></span>
+                                                      
                                                        <form:input class="form-control" name="sponsorProduct" path="sponsorProduct"
-                                                              required="required" placeholder="Sponsor Product" />
+                                                               placeholder="Sponsor Product" />
                                                 </div>
                                          </div>
 
-                                  <form:errors class="error" path="sponsorProduct"></form:errors>
-                                  <div class="form-group">
+                                  <form:errors path="sponsorProduct" class="error"></form:errors>
+                          <div class="form-group">
                                                 <div class="input-group">
-                                                       <span class="input-group-addon"><i class="fa fa-id-card"></i></span>
+                                                       
                                                        <form:input path="sponsorshipLocation" class="form-control"
                                                               name="sponsorshipLocation" placeholder="Sponsorship Location"
-                                                              required="required" />
+                                                               />
                                                 </div>
                                          </div>
-                                  <form:errors class="error" path="sponsorshipLocation"></form:errors>
-                           
-                                  <div class="form-group">
-                                                <input type="submit" name="Register" value="Register"
+                                  <form:errors path="sponsorshipLocation" class="error"></form:errors>
+                          <div class="form-group">
+                                                <input type="submit" name="Register" value="Register" onClick="verify()"
                                                        class="btn btn-primary btn-block btn-lg" />
-                                         </div>
+                           
                                   </form:form>
 
                                   <div class="text-center">
